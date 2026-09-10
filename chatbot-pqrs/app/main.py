@@ -116,7 +116,7 @@ def get_ai_response(user_input: str) -> str:
     contenidos = documentos_ane + [full_prompt]
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=contenidos,
     )
     
@@ -195,7 +195,7 @@ def procesar_cuerpo_a_word(tpl_doc, texto_markdown):
 # ─────────────────────────────────────────────
 #  INTERFAZ PRINCIPAL - CHAT
 # ─────────────────────────────────────────────
-col1, col2 = st.columns([2, 1])
+col1, col2 = st.columns([1, 1])
 
 with col1:
     st.subheader("💬 Chat con el Asistente")

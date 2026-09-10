@@ -105,7 +105,7 @@ def load_settings(
         output_dir=resolve_project_path(source.get("OUTPUT_DIR", "outputs"), project_root),
         llm_provider=source.get("LLM_PROVIDER", "gemini"),
         gemini_api_key=source.get("GEMINI_API_KEY", ""),
-        gemini_model=source.get("GEMINI_MODEL", "gemini-3.5-flash"),
+        gemini_model=source.get("GEMINI_MODEL", "gemini-3.6-flash"),
         gemini_max_output_tokens=int(
             source.get(
                 "GEMINI_MAX_OUTPUT_TOKENS", str(DEFAULT_GEMINI_MAX_OUTPUT_TOKENS)

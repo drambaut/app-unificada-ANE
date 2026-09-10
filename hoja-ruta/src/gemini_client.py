@@ -6,7 +6,7 @@ from google.genai import types
 from src.config import GEMINI_API_KEY, GEMINI_MODEL
 
 
-DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
+DEFAULT_GEMINI_MODEL = "gemini-3.6-flash"
 
 
 def get_gemini_client() -> genai.Client:

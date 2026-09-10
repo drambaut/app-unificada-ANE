@@ -58,15 +58,15 @@ st.markdown(
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 160px;
-        height: 160px;
-        min-width: 160px;
+        width: 105px;
+        height: 105px;
+        min-width: 105px;
         border-radius: 28px;
         background: rgba(255, 255, 255, 0.85);
-        font-size: 6rem;
+        font-size: 96px;
     }}
     .ane-header-title {{
-        font-size: 70px !important;
+        font-size: 35px !important;
         font-weight: 700 !important;
         color: {HEADING_COLOR} !important;
         margin: 0 !important;
@@ -74,7 +74,7 @@ st.markdown(
     }}
     .ane-header-subtitle {{
         color: {HEADING_COLOR} !important;
-        font-size: 30px !important;
+        font-size: 18px !important;
         margin-top: 0.5rem !important;
     }}
     .ane-date-box {{
@@ -84,20 +84,20 @@ st.markdown(
         border-radius: 12px;
         padding: 1rem 1.8rem;
         text-align: center;
-        font-size: 28px !important;
+        font-size: 18px !important;
         color: {GRAY_TEXT_COLOR} !important;
         flex-shrink: 0;
     }}
     .ane-date-box b {{
         display: block;
-        font-size: 28px !important;
+        font-size: 18px !important;
         color: {HEADING_COLOR} !important;
     }}
     /* Margen de 2cm a la izquierda y derecha del contenido (todo lo que va
        debajo del encabezado: títulos de sección y filas de tarjetas). El
        encabezado (.ane-header-banner) no se toca. */
     .ane-section-title {{
-        font-size: 40px !important;
+        font-size: 28px !important;
         font-weight: 700 !important;
         color: {HEADING_COLOR} !important;
         margin: 1.8rem 2cm 0.9rem 2cm !important;
@@ -120,23 +120,23 @@ st.markdown(
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 64px;
-        height: 64px;
-        min-width: 64px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
         border-radius: 14px;
-        font-size: 2.2rem !important;
+        font-size: 35px !important;
         flex-shrink: 0;
     }}
     .ane-card-title {{
         font-weight: 700 !important;
-        font-size: 30px !important;
+        font-size: 22px !important;
         color: {HEADING_COLOR} !important;
         margin: 0 !important;
         line-height: 1.25 !important;
     }}
     .ane-card-desc {{
         color: {GRAY_TEXT_COLOR} !important;
-        font-size: 25px !important;
+        font-size: 16px !important;
         min-height: 3.4rem;
     }}
     </style>

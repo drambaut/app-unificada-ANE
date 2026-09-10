@@ -131,15 +131,16 @@ def main() -> None:
         cuatro archivos: **UT5**, **UT**, **CMO** o **TEL**.
         """
     )
+    st.markdown("<div style='height:2.5em'></div>", unsafe_allow_html=True)
 
     col_movil, col_tel = st.columns(2)
     with col_movil:
-        st.markdown(f"<p style=\"font-size:26px; font-weight:700;\">Archivo de {MOVIL_LABEL}</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style=\"font-size:22px; font-weight:700;\">Archivo de {MOVIL_LABEL}</p>", unsafe_allow_html=True)
         movil_file = st.file_uploader(
             "Cargar archivo de COLOMBIA MÓVIL", type=["xlsx", "xls"], key="movil_uploader"
         )
     with col_tel:
-        st.markdown(f"<p style=\"font-size:26px; font-weight:700;\">Archivo de {TEL_LABEL}</p>", unsafe_allow_html=True)
+        st.markdown(f"<p style=\"font-size:22px; font-weight:700;\">Archivo de {TEL_LABEL}</p>", unsafe_allow_html=True)
         tel_file = st.file_uploader(
             "Cargar archivo de COLOMBIA TELECOMUNICACIONES", type=["xlsx", "xls"], key="tel_uploader"
         )

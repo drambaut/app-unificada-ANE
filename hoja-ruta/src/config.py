@@ -21,4 +21,4 @@ MAPEO_VALIDADO_CSV = DATA_PROCESSED_DIR / "mapeo_validado.csv"
 COBERTURA_ACTIVIDADES_CSV = DATA_PROCESSED_DIR / "cobertura_actividades.csv"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")

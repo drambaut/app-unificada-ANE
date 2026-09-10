@@ -307,7 +307,7 @@ def llamar_gemini(prompt_text: str) -> str:
     temperature=0.1 para respuestas deterministas y consistentes.
     """
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=prompt_text,
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -631,7 +631,7 @@ Devuelve SOLO JSON con esta estructura exacta:
 def extraer_nombre_proyecto(temas_data: list) -> str:
     nombres = [t['nombre'] for t in temas_data[:5]]
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=(
             f"En máximo 12 palabras escribe el título del proyecto o temática que agrupa "
             f"estos temas: {nombres}. Responde SOLO el título, sin comillas ni punto final."

@@ -37,24 +37,43 @@ input, textarea,
 input::placeholder, textarea::placeholder,
 [data-testid="stChatInput"] textarea,
 [data-testid="stChatInput"] textarea::placeholder {
-    font-size: 24px !important;
+    font-size: 16px !important;
 }
 [data-testid="stTextInput"] input,
 [data-testid="stTextArea"] textarea {
-    padding: 1.4rem 1.2rem !important;
-    min-height: 4.5rem !important;
+    padding: 0.8rem 1.2rem !important;
+    min-height: 56px !important;
 }
 /* El contenedor interno de baseweb tiene una altura fija que recorta el
    input más alto de arriba; hay que liberarlo también. */
 [data-testid="stTextInputRootElement"],
 [data-testid="stTextInputRootElement"] > div {
     height: auto !important;
-    min-height: 4.5rem !important;
+    min-height: 56px !important;
 }
-/* Texto de ayuda del subir archivo (ej. "200MB per file - XLSX"), al
-   mismo tamaño que el placeholder de los campos de texto */
+/* Texto de ayuda del subir archivo (ej. "200MB per file - XLSX") */
 [data-testid="stFileUploaderDropzoneInstructions"] span {
-    font-size: 24px !important;
+    font-size: 14px !important;
+}
+[data-testid="stFileUploaderDropzone"] {
+    min-height: 56px !important;
+    padding: 4px 12px !important;
+}
+[data-testid="stFileUploaderDropzone"] button {
+    min-height: 0 !important;
+    padding: 6px 14px !important;
+}
+/* Etiquetas de los campos (ej. "Nombre del proyecto", "Arrastra tu Excel...") */
+[data-testid="stWidgetLabel"] p {
+    font-size: 18px !important;
+}
+/* Etiquetas de subir archivo (ej. "Cargar archivo de COLOMBIA MÓVIL") */
+[data-testid="stFileUploader"] [data-testid="stWidgetLabel"] p {
+    font-size: 16px !important;
+}
+/* Título principal de cada app */
+h1 {
+    font-size: 35px !important;
 }
 /* Tablas (st.dataframe / st.table): letra más grande */
 [data-testid="stDataFrame"],
@@ -85,11 +104,11 @@ input::placeholder, textarea::placeholder,
 }
 /* Títulos de cada apartado del menú (Inicio, IA generativa, ...) */
 [data-testid="stNavSectionHeader"] p {
-    font-size: 30px !important;
+    font-size: 20px !important;
 }
 /* Resto del menú: los enlaces a cada app */
 [data-testid="stSidebarNavLink"] p {
-    font-size: 25px !important;
+    font-size: 16px !important;
 }
 /* Espacio entre el último enlace de un apartado y el título del siguiente */
 [data-testid="stNavSectionHeader"] {
@@ -104,19 +123,19 @@ div[data-testid="stVerticalBlockBorderWrapper"] {
 [data-testid="stCaptionContainer"],
 [data-testid="stCaptionContainer"] p,
 [data-testid="stText"] {
-    font-size: 25px;
+    font-size: 16px;
 }
 /* Encabezados internos de cada app (###, ####, #####) */
 [data-testid="stMarkdownContainer"] h3,
 [data-testid="stMarkdownContainer"] h4,
 [data-testid="stMarkdownContainer"] h5 {
-    font-size: 25px !important;
+    font-size: 20px !important;
 }
 /* Enlace "Abrir" de las tarjetas de Inicio */
 [data-testid="stPageLink"],
 [data-testid="stPageLink"] p,
 [data-testid="stPageLink"] span {
-    font-size: 20px !important;
+    font-size: 18px !important;
 }
 </style>
 """
