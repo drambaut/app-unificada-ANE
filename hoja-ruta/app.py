@@ -123,18 +123,10 @@ def render_missing_processed_file() -> None:
         "No se encontraron los archivos procesados requeridos:\n\n"
         "- data/processed/hoja_ruta.csv\n"
         "- data/processed/mapeo_generado.csv\n"
-        "- data/processed/cobertura_actividades.csv\n\n"
+        "- data/processed/cobertura_actividades.csv\n"
+        "- data/raw/proyectos__raw.csv\n\n"
         "Ejecuta primero:\n\n"
         "```bash\npython scripts/run_pipeline.py\n```"
-    )
-    # --- Diagnóstico temporal ---
-    st.warning(
-        f"DIAGNÓSTICO: BASE_DIR = `{config.BASE_DIR}`\n\n"
-        f"¿Existe BASE_DIR? {config.BASE_DIR.exists()}\n\n"
-        f"¿Existe data/processed? {(config.BASE_DIR / 'data' / 'processed').exists()}\n\n"
-        f"Contenido de BASE_DIR: {sorted(p.name for p in config.BASE_DIR.iterdir()) if config.BASE_DIR.exists() else 'N/A'}\n\n"
-        f"Contenido de data/processed: "
-        f"{sorted(p.name for p in (config.BASE_DIR / 'data' / 'processed').iterdir()) if (config.BASE_DIR / 'data' / 'processed').exists() else 'N/A'}"
     )
 
 
