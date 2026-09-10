@@ -1,0 +1,30 @@
+id_actividad,linea_hoja_ruta,actividad,horizonte,observaciones
+A01,"Arquitectura, integración y almacenamiento de datos",Actualizar diagnóstico de la arquitectura de datos.,Corto plazo,No especificado
+A02,"Arquitectura, integración y almacenamiento de datos",Documentar el inventario de fuentes de información.,Corto plazo,No especificado
+A03,"Arquitectura, integración y almacenamiento de datos",Flujograma de la integración de datos,Corto plazo,No especificado
+A04,"Arquitectura, integración y almacenamiento de datos","Establecer interoperabilidad progresiva: APIs, flujos de integración con HORUS, ICC Manager, SGE y si es posible técnicamente con HECAa.",Mediano plazo,No especificado
+A05,"Arquitectura, integración y almacenamiento de datos","Implementar un repositorio maestro que integre CNABF, SGE, ICC Manager, HORUS).",Mediano plazo,No especificado
+A06,"Arquitectura, integración y almacenamiento de datos",Migrar hacia un data warehouse institucional (Azure/Microsoft 365).,Mediano plazo,No especificado
+A07,Gobernanza de datos,"Crear el comité de la Estrategia de Gestión de datos (Dirección y áreas, incluyendo TI), que tendrá la responsabilidad de definir la política de gobernanza y calidad de datos y su ejecución.",Corto plazo,No especificado
+A08,Gobernanza de datos,"Definir roles básicos (data owners y stewards) particularmente para los procesos más críticos, como, por ejemplo, el trámite de solicitudes de espectro.",Corto plazo,No especificado
+A09,Gobernanza de datos,Socializar lineamientos mínimos de seguridad y acceso.,Corto plazo,No especificado
+A10,Gobernanza de datos,Estandarizar plantillas y procesos en Excel/SharePoint.,Corto plazo,No especificado
+A11,Gobernanza de datos,Fortalecer controles unificados de seguridad y auditoría de accesos.,Corto plazo,No especificado
+A12,Gobernanza de datos,Formalizar políticas de gestión documental con clasificación y versionamiento en SharePoint.,Corto plazo,No especificado
+A13,Gobernanza de datos,Implementar programa institucional de gobernanza de datos.,Mediano plazo,No especificado
+A14,Gobernanza de datos,Establecer catálogo institucional de metadatos y glosario unificado.,Mediano plazo,No especificado
+A15,Gobernanza de datos,Evaluar la posibilidad de interoperabilidad de la gestión documental con el Ministerio de TIC.,Mediano plazo,No especificado
+A16,Gobernanza de datos,Desplegar un sistema integral de ciberseguridad para datos y aplicaciones críticas.,Mediano plazo,No especificado
+A17,Analítica de datos,"Tablero de PQR: Consolidado con los aspectos más relevantes en el tratamiento de PQRs, tanto de solicitudes de espectro como de PQR generales",Corto plazo,"Los tableros propuestos para el corto plazo hacen parte del ejercicio realizado en 2025, en el cuál se identificaron las principales necesidades de la Subdirección pero que, dado el tiempo de desarrollo, la Subdirección decidió dejar 4 tableros para implementar en 2026. El diseño, desarrollo e implementación de estos se podrá realizar con recurso humano interno (definición grupo de analítica) o a través de contratación externa."
+A18,Analítica de datos,Dashboard en Power BI para indicadores IMT: Desarrollar un tablero de control integral para el seguimiento de indicadores económicos del sector de telecomunicaciones (HECAa).,Corto plazo,No especificado
+A19,Analítica de datos,Seguimiento de Tiempos SGP y Entidades Externas. aplica para de forma transversal entre las 4 coordinaciones.,Corto plazo,No especificado
+A20,Analítica de datos,Visualización de Contactos,Corto plazo,No especificado
+A21,Analítica de datos,Tablero Automatizado de Análisis Espectral: análisis de asignación espectral que centralice la información del SGE,Mediano plazo,No especificado
+A22,Analítica de datos,"Implementar analítica avanzada (IA, ML) aplicada a la gestión del espectro.",Mediano plazo,No especificado
+A23,Analítica de datos,Definir líneas de innovación en gestión del espectro con big data e IA.,Mediano plazo,No especificado
+A24,Optimización,Automatizar completamente la atención de solicitudes de espectro con trazabilidad en línea.,Mediano plazo,No especificado
+A25,Optimización,"Automatizar procesos operativos críticos con Power Automate y Power Apps. Migrar procesos manuales (ej. carga de archivos F1/F3, seguimiento solicitudes, consultas CNABF/SGE) a flujos en Power Automate o scripts estandarizados.",Mediano plazo,No especificado
+A26,Cultura organizacional en torno a la gestión de datos,Socialización y divulgación de acciones (a realizarse en 2024),Corto y mediano plazo,No especificado
+A27,Cultura organizacional en torno a la gestión de datos,"Elaborar manuales de usuario y documentar rutinas críticas (Python, Power BI, procesos manuales).",Corto y mediano plazo,No especificado
+A28,Cultura organizacional en torno a la gestión de datos,Realizar talleres de sensibilización en gestión de datos.,Corto y mediano plazo,No especificado
+A29,Cultura organizacional en torno a la gestión de datos,"Programa de capacitación continua en Microsoft 365 y gestión de datos: Esto incluye entre otros, Power BI, Power Automate, SharePoint.",Corto y mediano plazo,"En este punto es fundamental, tener claro quiénes serán los usuarios relacionados con la estrategia de datos."

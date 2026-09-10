@@ -1,0 +1,22 @@
+# Secretos y configuración local — nunca deben subirse al repositorio.
+.env
+**/.env
+!**/.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / frontend
+node_modules/
+formulario-banda-900/frontend/dist/
+formulario-banda-900/backend/static/
+
+# Streamlit
+.streamlit/
+
+# SO / editor
+.DS_Store
+Thumbs.db

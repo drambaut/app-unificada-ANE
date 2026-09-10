@@ -1,0 +1,69 @@
+# Requisitos combinados de las 8 apps de app_unificada.
+# Instala con: pip install -r requirements_unificado.txt
+# Luego, para webscraping-internacional: playwright install chromium
+#
+# CONFLICTOS CONOCIDOS A REVISAR SI FALLA LA INSTALACIÓN:
+# - separacion-informacion pedía pandas>=3.0,<4.0 mientras el resto usa
+#   pandas 2.x; aquí se deja pandas 2.x (el rango usado por 6 de las 8 apps)
+#   y hay que confirmar que separacion-informacion sigue funcionando con esa
+#   versión (su pipeline no usa APIs exclusivas de pandas 3).
+# - streamlit se fija a >=1.61 porque main.py usa st.navigation/st.Page,
+#   disponible desde Streamlit 1.36+.
+
+# --- Shell unificado ---
+streamlit>=1.61,<2.0
+
+# --- IA generativa (analisis-comentarios, chatbot-pqrs, hoja-ruta, vigilancia-tecnologica) ---
+google-genai>=1.0.0
+openai
+python-dotenv>=1.0.0,<2.0
+
+# --- Datos / Excel / documentos ---
+pandas>=2.0,<3.0
+openpyxl>=3.1.0
+xlrd>=2.0,<3.0
+pymupdf==1.24.14
+python-docx>=1.1.0
+docxtpl
+docxcompose
+pypdf>=4.0,<7.0
+
+# --- Gráficos ---
+plotly>=5.18.0
+kaleido==0.2.1
+matplotlib
+wordcloud
+networkx
+
+# --- Observatorio (SQL, scraping, feeds) ---
+SQLAlchemy>=2.0,<3.0
+PyYAML>=6.0,<7.0
+requests>=2.31,<3.0
+beautifulsoup4>=4.12,<5.0
+feedparser>=6.0,<7.0
+
+# --- Web scraping / navegador headless (observatorio-espectro, webscraping-internacional) ---
+playwright>=1.44.0
+
+# --- Utilidades ---
+tqdm
+jsonschema==4.23.0
+supabase
+deep-translator>=1.11.4
+
+# --- Apps embebidas por iframe (subprocesos FastAPI propios) ---
+# formulario-banda-900/backend y webscraping-internacional se lanzan como
+# subprocesos `uvicorn` independientes: pueden compartir este mismo venv si
+# no chocan las versiones, o instalarse en un venv aparte si prefieres
+# aislarlos (ver sus requirements.txt originales).
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+sqlalchemy>=2.0.36
+psycopg2-binary>=2.9.9
+pydantic[email]>=2.7.1
+PyJWT==2.8.0
+httpx==0.27.0
+python-multipart>=0.0.10
+
+# --- Tests (opcional) ---
+pytest

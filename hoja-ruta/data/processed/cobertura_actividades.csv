@@ -1,0 +1,30 @@
+id_actividad,linea_hoja_ruta,actividad,total_proyectos_que_cubren,total_proyectos_parciales,proyectos_que_cubren,proyectos_parciales,estado_cobertura
+A01,"Arquitectura, integración y almacenamiento de datos",Actualizar diagnóstico de la arquitectura de datos.,0,1,,ED02,Parcialmente cubierta
+A02,"Arquitectura, integración y almacenamiento de datos",Documentar el inventario de fuentes de información.,0,1,,ED02,Parcialmente cubierta
+A03,"Arquitectura, integración y almacenamiento de datos",Flujograma de la integración de datos,0,5,,ED02; ED03; ED06; ED07; ED11,Parcialmente cubierta
+A04,"Arquitectura, integración y almacenamiento de datos","Establecer interoperabilidad progresiva: APIs, flujos de integración con HORUS, ICC Manager, SGE y si es posible técnicamente con HECAa.",0,4,,ED02; ED03; ED06; ED11,Parcialmente cubierta
+A05,"Arquitectura, integración y almacenamiento de datos","Implementar un repositorio maestro que integre CNABF, SGE, ICC Manager, HORUS).",0,4,,ED01; ED02; ED06; ED11,Parcialmente cubierta
+A06,"Arquitectura, integración y almacenamiento de datos",Migrar hacia un data warehouse institucional (Azure/Microsoft 365).,0,8,,ED02; ED03; ED06; ED07; ED08; ED09; ED10; ED12,Parcialmente cubierta
+A07,Gobernanza de datos,"Crear el comité de la Estrategia de Gestión de datos (Dirección y áreas, incluyendo TI), que tendrá la responsabilidad de definir la política de gobernanza y calidad de datos y su ejecución.",0,10,,ED02; ED06; ED07; ED08; ED09; ED10; ED11; ED12; ED13; ED14,Parcialmente cubierta
+A08,Gobernanza de datos,"Definir roles básicos (data owners y stewards) particularmente para los procesos más críticos, como, por ejemplo, el trámite de solicitudes de espectro.",0,7,,ED02; ED03; ED06; ED07; ED08; ED09; ED10,Parcialmente cubierta
+A09,Gobernanza de datos,Socializar lineamientos mínimos de seguridad y acceso.,0,6,,ED02; ED06; ED07; ED08; ED09; ED10,Parcialmente cubierta
+A10,Gobernanza de datos,Estandarizar plantillas y procesos en Excel/SharePoint.,1,9,ED11,ED02; ED03; ED07; ED08; ED09; ED10; ED12; ED13; ED14,Cubierta
+A11,Gobernanza de datos,Fortalecer controles unificados de seguridad y auditoría de accesos.,0,0,,,Sin cobertura
+A12,Gobernanza de datos,Formalizar políticas de gestión documental con clasificación y versionamiento en SharePoint.,0,5,,ED02; ED06; ED07; ED08; ED10,Parcialmente cubierta
+A13,Gobernanza de datos,Implementar programa institucional de gobernanza de datos.,1,9,ED02,ED06; ED07; ED08; ED09; ED10; ED11; ED12; ED13; ED14,Cubierta
+A14,Gobernanza de datos,Establecer catálogo institucional de metadatos y glosario unificado.,0,12,,ED02; ED04; ED05; ED06; ED07; ED08; ED09; ED10; ED11; ED12; ED13; ED14,Parcialmente cubierta
+A15,Gobernanza de datos,Evaluar la posibilidad de interoperabilidad de la gestión documental con el Ministerio de TIC.,0,0,,,Sin cobertura
+A16,Gobernanza de datos,Desplegar un sistema integral de ciberseguridad para datos y aplicaciones críticas.,0,0,,,Sin cobertura
+A17,Analítica de datos,"Tablero de PQR: Consolidado con los aspectos más relevantes en el tratamiento de PQRs, tanto de solicitudes de espectro como de PQR generales",0,3,,ED07; ED09; ED14,Parcialmente cubierta
+A18,Analítica de datos,Dashboard en Power BI para indicadores IMT: Desarrollar un tablero de control integral para el seguimiento de indicadores económicos del sector de telecomunicaciones (HECAa).,1,2,ED08,ED07; ED09,Cubierta
+A19,Analítica de datos,Seguimiento de Tiempos SGP y Entidades Externas. aplica para de forma transversal entre las 4 coordinaciones.,3,1,ED03; ED09; ED11,ED07,Cubierta
+A20,Analítica de datos,Visualización de Contactos,0,0,,,Sin cobertura
+A21,Analítica de datos,Tablero Automatizado de Análisis Espectral: análisis de asignación espectral que centralice la información del SGE,0,5,,ED04; ED07; ED08; ED09; ED10,Parcialmente cubierta
+A22,Analítica de datos,"Implementar analítica avanzada (IA, ML) aplicada a la gestión del espectro.",0,5,,ED01; ED02; ED03; ED13; ED14,Parcialmente cubierta
+A23,Analítica de datos,Definir líneas de innovación en gestión del espectro con big data e IA.,1,3,ED02,ED12; ED13; ED14,Cubierta
+A24,Optimización,Automatizar completamente la atención de solicitudes de espectro con trazabilidad en línea.,1,5,ED06,ED03; ED05; ED07; ED09; ED10,Cubierta
+A25,Optimización,"Automatizar procesos operativos críticos con Power Automate y Power Apps. Migrar procesos manuales (ej. carga de archivos F1/F3, seguimiento solicitudes, consultas CNABF/SGE) a flujos en Power Automate o scripts estandarizados.",1,9,ED11,ED03; ED04; ED05; ED06; ED07; ED10; ED12; ED13; ED14,Cubierta
+A26,Cultura organizacional en torno a la gestión de datos,Socialización y divulgación de acciones (a realizarse en 2024),0,1,,ED02,Parcialmente cubierta
+A27,Cultura organizacional en torno a la gestión de datos,"Elaborar manuales de usuario y documentar rutinas críticas (Python, Power BI, procesos manuales).",0,10,,ED01; ED03; ED04; ED05; ED06; ED07; ED11; ED12; ED13; ED14,Parcialmente cubierta
+A28,Cultura organizacional en torno a la gestión de datos,Realizar talleres de sensibilización en gestión de datos.,0,1,,ED02,Parcialmente cubierta
+A29,Cultura organizacional en torno a la gestión de datos,"Programa de capacitación continua en Microsoft 365 y gestión de datos: Esto incluye entre otros, Power BI, Power Automate, SharePoint.",0,4,,ED02; ED03; ED07; ED11,Parcialmente cubierta

@@ -1,0 +1,41 @@
+# Dependencias del shell unificado (main.py + las 6 apps Streamlit) para el
+# contenedor que se despliega en Render como el servicio principal.
+# No incluye fastapi/uvicorn/psycopg2/playwright/deep-translator: esos
+# pertenecen a formulario-banda-900 y webscraping-internacional, que en
+# Render corren como servicios independientes (ver render.yaml).
+
+streamlit>=1.61,<2.0
+
+# --- IA generativa ---
+google-genai>=1.0.0
+openai
+python-dotenv>=1.0.0,<2.0
+
+# --- Datos / Excel / documentos ---
+pandas>=2.0,<3.0
+openpyxl>=3.1.0
+xlrd>=2.0,<3.0
+pymupdf==1.24.14
+python-docx>=1.1.0
+docxtpl
+docxcompose
+pypdf>=4.0,<7.0
+
+# --- Gráficos ---
+plotly>=5.18.0
+kaleido==0.2.1
+matplotlib
+wordcloud
+networkx
+
+# --- Observatorio (SQL, feeds; sin Playwright: eso es solo para el scraping manual) ---
+SQLAlchemy>=2.0.36
+PyYAML>=6.0,<7.0
+requests>=2.31,<3.0
+beautifulsoup4>=4.12,<5.0
+feedparser>=6.0,<7.0
+
+# --- Utilidades ---
+tqdm
+jsonschema==4.23.0
+supabase

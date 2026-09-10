@@ -1,0 +1,76 @@
+# Blueprint de Render para app_unificada: 3 servicios.
+# - ane-app-unificada: shell Streamlit con las 6 apps integradas (punto de entrada público).
+# - b900-ane: backend+frontend de formulario-banda-900 (FastAPI + React).
+# - webscraping-ane: backend+frontend de webscraping-internacional (FastAPI + Playwright).
+#
+# El shell embebe b900-ane y webscraping-ane vía iframe usando sus URLs
+# públicas (FORMULARIO_B900_URL / WEBSCRAPING_URL). Si cambias el `name` de
+# esos servicios, actualiza también esas dos variables.
+
+services:
+  - type: web
+    name: ane-app-unificada
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: GEMINI_MAX_OUTPUT_TOKENS
+        value: "65536"
+      - key: LLM_PROVIDER
+        value: gemini
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: DATA_DIR
+        value: /app/vigilancia-tecnologica/demo_data
+      - key: OUTPUT_DIR
+        value: outputs
+      - key: DASHBOARD_DATA_SOURCE
+        value: auto
+      - key: DATABASE_PATH
+        value: data/demo_observatorio.db
+      - key: REQUEST_TIMEOUT_SECONDS
+        value: "90"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: source-documents
+      - key: FORMULARIO_B900_URL
+        value: https://b900-ane.onrender.com
+      - key: WEBSCRAPING_URL
+        value: https://webscraping-ane.onrender.com
+
+  - type: web
+    name: b900-ane
+    runtime: docker
+    dockerfilePath: ./formulario-banda-900/Dockerfile
+    dockerContext: ./formulario-banda-900
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_JWT_SECRET
+        sync: false
+
+  - type: web
+    name: webscraping-ane
+    runtime: docker
+    dockerfilePath: ./webscraping-internacional/Dockerfile
+    dockerContext: ./webscraping-internacional
+    plan: free

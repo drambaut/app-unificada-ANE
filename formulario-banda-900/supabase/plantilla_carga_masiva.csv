@@ -1,0 +1,4 @@
+latitud,longitud,direccion_estacion,departamento,municipio,numero_sector,acimut,tilt,ganancia,ganancia_unidad,angulo_apertura,altura_suelo,potencia_transmision,tipo_estacion
+4.710989,-74.072092,Calle 100 # 15-20,Cundinamarca,Bogota,1,10,0,15,dBi,65,12,20,repetidora
+4.710989,-74.072092,Calle 100 # 15-20,Cundinamarca,Bogota,2,130,-2,15,dBi,65,12,20,repetidora
+6.244203,-75.581212,Cra 50 # 30-10,Antioquia,Medellin,1,200,5,18,dBi,90,15,25,nueva

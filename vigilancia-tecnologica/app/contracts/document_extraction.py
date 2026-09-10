@@ -1,0 +1,125 @@
+"""Contrato para extraccion documental de vigilancia."""
+
+from app.contracts.common import (
+    CONFIDENCE,
+    EVIDENCE_IDS,
+    EVIDENCE_SCHEMA,
+    EXTRACTION_BASIS,
+    OPEN_TEXT_LIST,
+    TEMPORARY_ID,
+    array_of,
+)
+
+FINDING_TYPE_VALUES = [
+    "desarrollo_tecnologico",
+    "decision_regulatoria",
+    "consulta_publica",
+    "propuesta_regulatoria",
+    "asignacion_o_planificacion",
+    "estudio_o_evidencia",
+    "riesgo",
+    "oportunidad",
+    "posicion_institucional",
+    "otro",
+]
+
+DOCUMENT_TYPE_VALUES = [
+    "reporte",
+    "noticia",
+    "boletin",
+    "consulta_publica",
+    "regulacion",
+    "presentacion",
+    "paper_tecnico",
+    "matriz",
+    "plan_estrategico",
+    "agenda_regulatoria",
+    "pmge",
+    "otro",
+]
+
+DOCUMENT_ANALYSIS_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": [
+        "temporary_id",
+        "document_type",
+        "title",
+        "summary",
+        "preliminary_topics",
+        "technologies",
+        "frequency_bands",
+        "countries_regions",
+        "organizations",
+        "actors",
+        "keywords",
+        "confidence",
+        "extraction_basis",
+        "evidence_ids",
+    ],
+    "properties": {
+        "temporary_id": TEMPORARY_ID,
+        "document_type": {"type": "string", "enum": DOCUMENT_TYPE_VALUES},
+        "title": {"type": "string"},
+        "summary": {"type": "string"},
+        "preliminary_topics": OPEN_TEXT_LIST,
+        "technologies": OPEN_TEXT_LIST,
+        "frequency_bands": OPEN_TEXT_LIST,
+        "countries_regions": OPEN_TEXT_LIST,
+        "organizations": OPEN_TEXT_LIST,
+        "actors": OPEN_TEXT_LIST,
+        "keywords": OPEN_TEXT_LIST,
+        "publication_date": {"type": ["string", "null"]},
+        "document_date": {"type": ["string", "null"]},
+        "language": {"type": ["string", "null"]},
+        "confidence": CONFIDENCE,
+        "extraction_basis": EXTRACTION_BASIS,
+        "evidence_ids": EVIDENCE_IDS,
+    },
+}
+
+DOCUMENT_FINDING_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "required": [
+        "temporary_id",
+        "finding_type",
+        "title",
+        "description",
+        "preliminary_topics",
+        "technologies",
+        "frequency_bands",
+        "countries_regions",
+        "organizations",
+        "confidence",
+        "extraction_basis",
+        "evidence_ids",
+    ],
+    "properties": {
+        "temporary_id": TEMPORARY_ID,
+        "finding_type": {"type": "string", "enum": FINDING_TYPE_VALUES},
+        "title": {"type": "string"},
+        "description": {"type": "string"},
+        "preliminary_topics": OPEN_TEXT_LIST,
+        "technologies": OPEN_TEXT_LIST,
+        "frequency_bands": OPEN_TEXT_LIST,
+        "countries_regions": OPEN_TEXT_LIST,
+        "organizations": OPEN_TEXT_LIST,
+        "confidence": CONFIDENCE,
+        "extraction_basis": EXTRACTION_BASIS,
+        "evidence_ids": EVIDENCE_IDS,
+    },
+}
+
+DOCUMENT_EXTRACTION_SCHEMA = {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "DocumentExtraction",
+    "type": "object",
+    "additionalProperties": False,
+    "required": ["document_analysis", "findings", "evidence"],
+    "properties": {
+        "document_analysis": DOCUMENT_ANALYSIS_SCHEMA,
+        "findings": array_of(DOCUMENT_FINDING_SCHEMA, min_items=0),
+        "evidence": array_of(EVIDENCE_SCHEMA, min_items=0),
+    },
+}

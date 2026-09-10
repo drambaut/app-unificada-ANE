@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Searcher — Reguladores Internacionales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F0F2F7;
+            --surface: #FFFFFF;
+            --surface-2: #F7F8FB;
+            --border: #DDE1EA;
+            --border-2: #C4CAD6;
+            --blue: #2563EB;
+            --blue-light: #EEF3FF;
+            --blue-hover: #1D4ED8;
+            --blue-glow: rgba(37, 99, 235, 0.12);
+            --green: #059669;
+            --green-bg: #ECFDF5;
+            --red: #DC2626;
+            --t1: #111827;
+            --t2: #4B5563;
+            --t3: #9CA3AF;
+            --r: 8px;
+            --r-sm: 6px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 130%;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--t1);
+            font-family: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            min-height: 100vh
+        }
+
+        .wrap {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 1.25rem 5rem
+        }
+
+        /* Topbar */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 0 1.25rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .55rem
+        }
+
+        .logo-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            background: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0
+        }
+
+        .logo-name {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--t1);
+            line-height: 1.1
+        }
+
+        .logo-sub {
+            font-size: .67rem;
+            color: var(--t3)
+        }
+
+        .topbar-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .62rem;
+            letter-spacing: 1px;
+            color: var(--blue);
+            border: 1px solid #C3D0F5;
+            background: var(--blue-light);
+            padding: 3px 9px;
+            border-radius: 20px
+        }
+
+        /* Views */
+        .view {
+            display: none;
+            animation: fadeIn .22s ease
+        }
+
+        .view.active {
+            display: block
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* Search view */
+        .hero {
+            margin-bottom: 1.5rem
+        }
+
+        .hero h1 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--t1);
+            line-height: 1.25;
+            margin-bottom: .3rem
+        }
+
+        .hero p {
+            color: var(--t2);
+            font-size: .88rem
+        }
+
+        .search-row {
+            display: flex;
+            gap: .55rem;
+            margin-bottom: .6rem
+        }
+
+        .search-input {
+            flex: 1;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r);
+            padding: .68rem 1rem;
+            color: var(--t1);
+            font-family: inherit;
+            font-size: .93rem;
+            outline: none;
+            transition: border-color .18s, box-shadow .18s;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .05)
+        }
+
+        .search-input::placeholder {
+            color: var(--t3)
+        }
+
+        .search-input:focus {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-glow)
+        }
+
+        .btn-primary {
+            background: var(--blue);
+            color: #fff;
+            border: none;
+            border-radius: var(--r);
+            padding: .68rem 1.35rem;
+            font-family: inherit;
+            font-size: .88rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            transition: background .15s, box-shadow .15s, transform .1s;
+            box-shadow: 0 1px 3px rgba(37, 99, 235, .3)
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-hover);
+            box-shadow: 0 3px 10px rgba(37, 99, 235, .35)
+        }
+
+        .btn-primary:active {
+            transform: scale(.98)
+        }
+
+        /* Advanced */
+        .adv-toggle {
+            margin-bottom: .65rem
+        }
+
+        .adv-toggle button {
+            background: none;
+            border: none;
+            color: var(--t3);
+            font-family: inherit;
+            font-size: .78rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
+            padding: 3px 5px;
+            border-radius: 4px;
+            transition: color .15s
+        }
+
+        .adv-toggle button:hover {
+            color: var(--blue)
+        }
+
+        .adv-chevron {
+            transition: transform .25s;
+            display: inline-block
+        }
+
+        .adv-chevron.open {
+            transform: rotate(180deg)
+        }
+
+        .adv-panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height .38s ease, opacity .28s;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .06)
+        }
+
+        .adv-panel.open {
+            max-height: 700px;
+            opacity: 1
+        }
+
+        .adv-inner {
+            padding: 1.2rem
+        }
+
+        .section-label {
+            font-size: .68rem;
+            font-weight: 600;
+            color: var(--t3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: .65rem;
+            display: flex;
+            align-items: center;
+            gap: 5px
+        }
+
+        .section-label a {
+            color: var(--blue);
+            text-decoration: none;
+            cursor: pointer;
+            font-size: .66rem;
+            font-weight: 500
+        }
+
+        .section-label a:hover {
+            text-decoration: underline
+        }
+
+        .sep {
+            color: var(--border-2)
+        }
+
+        /* Chips */
+        .chips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+            gap: .4rem;
+            margin-bottom: 1.1rem
+        }
+
+        .chip {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .42rem .6rem;
+            background: var(--surface-2);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-sm);
+            cursor: pointer;
+            transition: border-color .13s, background .13s;
+            user-select: none;
+            min-width: 0;
+            overflow: hidden
+        }
+
+        .chip:hover,
+        .chip.on {
+            border-color: var(--blue);
+            background: var(--blue-light)
+        }
+
+        .chip-box {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            border: 1.5px solid var(--border-2);
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .13s
+        }
+
+        .chip.on .chip-box {
+            background: var(--blue);
+            border-color: var(--blue)
+        }
+
+        .chip-text {
+            flex: 1;
+            min-width: 0
+        }
+
+        .chip-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .64rem;
+            font-weight: 500;
+            color: var(--blue);
+            display: block;
+            line-height: 1
+        }
+
+        .chip-name {
+            font-size: .69rem;
+            color: var(--t2);
+            display: block;
+            line-height: 1.2;
+            margin-top: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 1rem 0
+        }
+
+        .opts-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-start
+        }
+
+        .opt-group {
+            flex: 1;
+            min-width: 160px
+        }
+
+        .opt-group>label {
+            display: block;
+            font-size: .76rem;
+            color: var(--t2);
+            margin-bottom: .35rem;
+            font-weight: 500
+        }
+
+        select.opt-select {
+            width: 100%;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-sm);
+            color: var(--t1);
+            font-family: inherit;
+            font-size: .84rem;
+            padding: .42rem .65rem;
+            outline: none;
+            cursor: pointer;
+            transition: border-color .18s
+        }
+
+        select.opt-select:focus {
+            border-color: var(--blue)
+        }
+
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .3rem 0
+        }
+
+        .toggle-row span {
+            font-size: .82rem;
+            color: var(--t2)
+        }
+
+        .tog {
+            position: relative;
+            width: 36px;
+            height: 20px;
+            flex-shrink: 0
+        }
+
+        .tog input {
+            opacity: 0;
+            width: 0;
+            height: 0
+        }
+
+        .tog-track {
+            position: absolute;
+            inset: 0;
+            border-radius: 10px;
+            background: var(--border-2);
+            cursor: pointer;
+            transition: all .2s
+        }
+
+        .tog-track::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            transition: all .2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .15)
+        }
+
+        .tog input:checked~.tog-track {
+            background: var(--blue)
+        }
+
+        .tog input:checked~.tog-track::before {
+            transform: translateY(-50%) translateX(16px)
+        }
+
+        /* Progress view */
+        .prog-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 1.2rem 1.35rem;
+            margin-bottom: .9rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .06)
+        }
+
+        .prog-topline {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: .85rem;
+            gap: 1rem
+        }
+
+        .prog-title {
+            font-size: .97rem;
+            font-weight: 700;
+            color: var(--t1);
+            margin-bottom: .15rem
+        }
+
+        .prog-sub {
+            font-size: .8rem;
+            color: var(--t2)
+        }
+
+        .prog-pct {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--blue);
+            white-space: nowrap
+        }
+
+        .master-bar {
+            height: 6px;
+            background: var(--bg);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: .4rem
+        }
+
+        .master-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--blue) 0%, #0EA5E9 100%);
+            border-radius: 3px;
+            transition: width .5s cubic-bezier(.4, 0, .2, 1)
+        }
+
+        .master-labels {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .master-labels span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem;
+            color: var(--t3)
+        }
+
+        #lbl-links {
+            color: var(--green)
+        }
+
+        .trans-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+            margin-bottom: .9rem
+        }
+
+        .trans-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: .2rem .55rem;
+            font-size: .72rem;
+            color: var(--t2);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .04)
+        }
+
+        .trans-lang {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .6rem;
+            color: var(--blue);
+            margin-right: .28rem
+        }
+
+        /* Cards grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+            gap: .5rem;
+            margin-bottom: .9rem
+        }
+
+        .sc {
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r);
+            padding: .7rem .8rem;
+            transition: border-color .28s, box-shadow .28s, background .28s;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+            min-width: 0;
+            overflow: hidden
+        }
+
+        .sc.active {
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-glow), 0 2px 8px rgba(37, 99, 235, .12)
+        }
+
+        .sc.ok {
+            border-color: var(--green);
+            background: var(--green-bg)
+        }
+
+        .sc.empty {
+            opacity: .38
+        }
+
+        .sc-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: .28rem
+        }
+
+        .sc-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem;
+            font-weight: 500;
+            color: var(--blue)
+        }
+
+        .sc-icon {
+            font-size: .78rem;
+            line-height: 1;
+            flex-shrink: 0
+        }
+
+        .sc-name {
+            font-size: .69rem;
+            color: var(--t2);
+            line-height: 1.3;
+            margin-bottom: .4rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: break-word
+        }
+
+        .sc-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .7rem;
+            color: var(--t3)
+        }
+
+        .sc-count.has {
+            color: var(--green);
+            font-weight: 500
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            border: 2px solid #C3D0F5;
+            border-top-color: var(--blue);
+            animation: spin .7s linear infinite
+        }
+
+        /* Log */
+        .log-details summary {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .5rem .8rem;
+            cursor: pointer;
+            list-style: none;
+            font-size: .75rem;
+            color: var(--t3);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            user-select: none;
+            transition: color .15s
+        }
+
+        .log-details summary::-webkit-details-marker {
+            display: none
+        }
+
+        .log-details summary:hover {
+            color: var(--t2)
+        }
+
+        .log-details[open] summary {
+            border-radius: var(--r) var(--r) 0 0
+        }
+
+        .log-body {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .67rem;
+            color: #6B7280;
+            line-height: 1.9;
+            padding: .7rem 1rem;
+            max-height: 175px;
+            overflow-y: auto;
+            background: #F9FAFB;
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 var(--r) var(--r);
+            white-space: pre-wrap
+        }
+
+        .log-body .ok {
+            color: var(--green)
+        }
+
+        .log-body .err {
+            color: var(--red)
+        }
+
+        /* Results view */
+        .res-hero {
+            margin-bottom: 1.25rem
+        }
+
+        .res-hero h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--t1);
+            margin-bottom: .2rem
+        }
+
+        .res-query {
+            font-size: .83rem;
+            color: var(--t2)
+        }
+
+        .res-query em {
+            color: var(--blue);
+            font-style: normal;
+            font-weight: 600
+        }
+
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .55rem;
+            margin-bottom: 1.1rem
+        }
+
+        .kpi {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: .9rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .05)
+        }
+
+        .kpi-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.65rem;
+            font-weight: 500;
+            color: var(--blue);
+            line-height: 1;
+            margin-bottom: .18rem
+        }
+
+        .kpi-label {
+            font-size: .66rem;
+            color: var(--t3);
+            text-transform: uppercase;
+            letter-spacing: .5px
+        }
+
+        .res-table {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            overflow: hidden;
+            margin-bottom: 1.1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .05)
+        }
+
+        .rt-head {
+            display: grid;
+            grid-template-columns: 60px 1fr 78px 44px;
+            padding: .5rem 1rem;
+            background: var(--surface-2);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .rt-head span {
+            font-size: .64rem;
+            font-weight: 600;
+            color: var(--t3);
+            text-transform: uppercase;
+            letter-spacing: .7px
+        }
+
+        .rt-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 78px 44px;
+            padding: .62rem 1rem;
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+            transition: background .12s
+        }
+
+        .rt-row:last-child {
+            border-bottom: none
+        }
+
+        .rt-row:hover {
+            background: var(--surface-2)
+        }
+
+        .rt-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .68rem;
+            color: var(--blue)
+        }
+
+        .rt-name {
+            font-size: .8rem;
+            color: var(--t1)
+        }
+
+        .rt-n {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: .78rem;
+            font-weight: 500;
+            text-align: right;
+            padding-right: .9rem
+        }
+
+        .rt-n.has {
+            color: var(--green)
+        }
+
+        .rt-n.no {
+            color: var(--t3)
+        }
+
+        .rt-dot {
+            text-align: center;
+            font-size: .78rem
+        }
+
+        .dl-btn {
+            width: 100%;
+            padding: .8rem;
+            background: var(--blue);
+            border: none;
+            border-radius: var(--r);
+            color: #fff;
+            font-family: inherit;
+            font-size: .9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            transition: background .15s, box-shadow .15s, transform .1s;
+            margin-bottom: .6rem;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, .28)
+        }
+
+        .dl-btn:hover {
+            background: var(--blue-hover);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, .38)
+        }
+
+        .dl-btn:active {
+            transform: scale(.99)
+        }
+
+        .btn-ghost {
+            width: 100%;
+            padding: .62rem;
+            background: transparent;
+            border: 1.5px solid var(--border);
+            border-radius: var(--r);
+            color: var(--t2);
+            font-family: inherit;
+            font-size: .84rem;
+            cursor: pointer;
+            transition: border-color .15s, color .15s
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--blue);
+            color: var(--blue)
+        }
+
+        @media(max-width:520px) {
+            .kpi-row {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .kpi-row .kpi:last-child {
+                grid-column: 1/-1
+            }
+
+            .rt-head,
+            .rt-row {
+                grid-template-columns: 52px 1fr 60px
+            }
+
+            .rt-head span:last-child,
+            .rt-dot {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <nav class="topbar">
+            <div class="logo">
+                <div class="logo-icon">🔍</div>
+                <div>
+                    <div class="logo-name">Web Searcher</div>
+                    <div class="logo-sub">Agencia Nacional del Espectro · Colombia</div>
+                </div>
+            </div>
+            <div class="topbar-badge">ANE · COLOMBIA</div>
+        </nav>
+
+        <!-- VIEW 1 — SEARCH -->
+        <section id="v-search" class="view active">
+            <div class="hero">
+                <h1>Búsqueda en reguladores internacionales de telecomunicaciones</h1>
+                <p>Búsqueda automática en 10 organismos reguladores con traducción en tiempo real y exportación a Excel
+                </p>
+            </div>
+            <div class="search-row">
+                <input id="q-input" class="search-input" type="text"
+                    placeholder="Ej: gestión del espectro radioeléctrico, 5G spectrum policy…"
+                    onkeydown="if(event.key==='Enter') doSearch()">
+                <button class="btn-primary" onclick="doSearch()">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                        viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.35-4.35" />
+                    </svg>
+                    Buscar
+                </button>
+            </div>
+            <div class="adv-toggle">
+                <button onclick="toggleAdv()">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <line x1="4" y1="6" x2="20" y2="6" />
+                        <line x1="8" y1="12" x2="16" y2="12" />
+                        <line x1="10" y1="18" x2="14" y2="18" />
+                    </svg>
+                    Opciones de búsqueda
+                    <span class="adv-chevron" id="chevron">▾</span>
+                </button>
+            </div>
+            <div class="adv-panel" id="adv-panel">
+                <div class="adv-inner">
+                    <div class="section-label">
+                        Organismos a consultar
+                        <span class="sep">·</span>
+                        <a onclick="selAll()">todos</a>
+                        <span class="sep">/</span>
+                        <a onclick="selNone()" style="color:var(--t3)">ninguno</a>
+                    </div>
+                    <div class="chips-grid" id="chips-grid"></div>
+                    <hr>
+                    <div class="opts-row">
+                        <div class="opt-group">
+                            <label>Formato de descarga</label>
+                            <select id="o-fmt" class="opt-select">
+                                <option value="xlsx">Excel (.xlsx)</option>
+                                <option value="csv">CSV (.csv)</option>
+                            </select>
+                        </div>
+                        <div class="opt-group">
+                            <label>Traducción</label>
+                            <div class="toggle-row">
+                                <span>Traducir al idioma de cada sitio</span>
+                                <label class="tog">
+                                    <input type="checkbox" id="o-trans" checked>
+                                    <span class="tog-track"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2 — PROGRESS -->
+        <section id="v-progress" class="view">
+            <div class="prog-card">
+                <div class="prog-topline">
+                    <div>
+                        <div class="prog-title" id="p-title">Buscando…</div>
+                        <div class="prog-sub" id="p-sub">Iniciando navegador Chromium…</div>
+                    </div>
+                    <div class="prog-pct" id="p-pct">0%</div>
+                </div>
+                <div class="master-bar">
+                    <div class="master-fill" id="m-fill"></div>
+                </div>
+                <div class="master-labels">
+                    <span id="lbl-progress">0 / 0 organismos</span>
+                    <span id="lbl-links">0 links encontrados</span>
+                </div>
+            </div>
+            <div id="trans-strip"></div>
+            <div class="cards-grid" id="cards-grid"></div>
+            <details class="log-details">
+                <summary>
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <polyline points="16 18 22 12 16 6" />
+                        <polyline points="8 6 2 12 8 18" />
+                    </svg>
+                    Log en tiempo real
+                </summary>
+                <pre class="log-body" id="log-out"></pre>
+            </details>
+        </section>
+
+        <!-- VIEW 3 — RESULTS -->
+        <section id="v-results" class="view">
+            <div class="res-hero">
+                <h2>✅ Búsqueda completada</h2>
+                <p class="res-query">Resultados para <em id="r-query">""</em></p>
+            </div>
+            <div class="kpi-row">
+                <div class="kpi">
+                    <div class="kpi-num" id="k-total">0</div>
+                    <div class="kpi-label">Links encontrados</div>
+                </div>
+                <div class="kpi">
+                    <div class="kpi-num" id="k-sites">0</div>
+                    <div class="kpi-label">Con resultados</div>
+                </div>
+                <div class="kpi">
+                    <div class="kpi-num" id="k-queried">0</div>
+                    <div class="kpi-label">Consultados</div>
+                </div>
+            </div>
+            <div class="res-table">
+                <div class="rt-head">
+                    <span>ID</span><span>Organismo</span>
+                    <span style="text-align:right;padding-right:.9rem">Links</span>
+                    <span style="text-align:center">OK</span>
+                </div>
+                <div id="rt-body"></div>
+            </div>
+            <button class="dl-btn" onclick="dlFile()">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span id="dl-label">Descargar resultados</span>
+            </button>
+            <button class="btn-ghost" onclick="newSearch()">← Nueva búsqueda</button>
+        </section>
+    </div>
+
+    <script>
+        let allSites = [], selectedIds = new Set(), jobId = null, searchedSites = [], siteCounts = {}, query = '';
+
+        (async () => {
+            const res = await fetch('/api/sites');
+            allSites = await res.json();
+            selectedIds = new Set(allSites.map(s => s.id));
+            buildChips();
+        })();
+
+        function sn(s) { return s.name.split('(')[0].split(' - ')[0].trim() }
+
+        function buildChips() {
+            document.getElementById('chips-grid').innerHTML = allSites.map(s => `
+    <div class="chip on" data-id="${s.id}" onclick="toggleChip(this,'${s.id}')">
+      <div class="chip-box"><svg width="8" height="8" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="chip-text">
+        <span class="chip-id">${s.id.toUpperCase()}</span>
+        <span class="chip-name" title="${s.name}">${sn(s)}</span>
+      </div>
+    </div>`).join('');
+        }
+
+        function toggleChip(el, id) { el.classList.toggle('on'); selectedIds.has(id) ? selectedIds.delete(id) : selectedIds.add(id) }
+        function selAll() { allSites.forEach(s => { selectedIds.add(s.id); document.querySelector(`.chip[data-id="${s.id}"]`)?.classList.add('on') }) }
+        function selNone() { allSites.forEach(s => { selectedIds.delete(s.id); document.querySelector(`.chip[data-id="${s.id}"]`)?.classList.remove('on') }) }
+        function toggleAdv() { document.getElementById('adv-panel').classList.toggle('open'); document.getElementById('chevron').classList.toggle('open') }
+
+        async function doSearch() {
+            query = document.getElementById('q-input').value.trim();
+            if (!query) { document.getElementById('q-input').focus(); return }
+            if (!selectedIds.size) { alert('Selecciona al menos un organismo.'); return }
+            const noTrans = !document.getElementById('o-trans').checked;
+            const fmt = document.getElementById('o-fmt').value;
+            searchedSites = allSites.filter(s => selectedIds.has(s.id));
+            siteCounts = {};
+            document.getElementById('p-title').textContent = `Buscando: "${query}"`;
+            document.getElementById('p-sub').textContent = 'Iniciando navegador Chromium…';
+            document.getElementById('p-pct').textContent = '0%';
+            document.getElementById('m-fill').style.width = '0%';
+            document.getElementById('lbl-progress').textContent = `0 / ${searchedSites.length} organismos`;
+            document.getElementById('lbl-links').textContent = '0 links encontrados';
+            document.getElementById('log-out').innerHTML = '';
+            document.getElementById('trans-strip').innerHTML = '';
+            buildProgressCards();
+            showView('v-progress');
+            const r = await fetch('/api/search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query, site_ids: [...selectedIds], no_translate: noTrans, format: fmt, max_links: 50 }) });
+            if (!r.ok) { alert('Error al iniciar la búsqueda.'); showView('v-search'); return }
+            const data = await r.json();
+            jobId = data.job_id;
+            if (!noTrans && data.translations) {
+                const flags = { en: '🇬🇧', es: '🇪🇸', ko: '🇰🇷', pt: '🇧🇷' };
+                const strip = document.getElementById('trans-strip');
+                strip.className = 'trans-strip';
+                strip.innerHTML = Object.entries(data.translations).map(([l, t]) => `<span class="trans-pill"><span class="trans-lang">${flags[l] || l.toUpperCase()} ${l.toUpperCase()}</span>${t}</span>`).join('');
+            }
+            const es = new EventSource(`/api/progress/${jobId}`);
+            es.onmessage = e => handleSSE(JSON.parse(e.data), es);
+            es.onerror = () => { appendLog('⚠️ Conexión SSE interrumpida.'); es.close() };
+        }
+
+        function buildProgressCards() {
+            document.getElementById('cards-grid').innerHTML = searchedSites.map(s => `
+    <div class="sc" id="sc-${s.id}">
+      <div class="sc-head"><span class="sc-id">${s.id.toUpperCase()}</span><span class="sc-icon" id="sci-${s.id}">⬜</span></div>
+      <div class="sc-name" title="${s.name}">${sn(s)}</div>
+      <div class="sc-count" id="scc-${s.id}">Esperando…</div>
+    </div>`).join('');
+        }
+
+        function handleSSE(d, es) {
+            if (d.type === 'log') { appendLog(d.msg); return }
+            if (d.type === 'progress') {
+                const { current, total, site_id, site_name, site_results } = d;
+                const pct = total > 0 ? Math.round((current / total) * 100) : 0;
+                document.getElementById('m-fill').style.width = pct + '%';
+                document.getElementById('p-pct').textContent = pct + '%';
+                document.getElementById('lbl-progress').textContent = `${current} / ${total} organismos`;
+                if (site_id) {
+                    document.getElementById('p-sub').textContent = site_name || site_id;
+                    const card = document.getElementById(`sc-${site_id}`);
+                    if (card && !card.classList.contains('ok') && !card.classList.contains('empty')) {
+                        document.querySelectorAll('.sc.active').forEach(c => { if (c !== card) c.classList.remove('active') });
+                        card.classList.add('active');
+                        document.getElementById(`sci-${site_id}`).innerHTML = '<span class="spinner"></span>';
+                        document.getElementById(`scc-${site_id}`).textContent = 'Buscando…';
+                    }
+                }
+                if (site_results) {
+                    Object.entries(site_results).forEach(([sid, cnt]) => {
+                        if (sid in siteCounts) return;
+                        siteCounts[sid] = cnt;
+                        const card = document.getElementById(`sc-${sid}`);
+                        if (!card) return;
+                        card.classList.remove('active');
+                        card.classList.add(cnt > 0 ? 'ok' : 'empty');
+                        document.getElementById(`sci-${sid}`).textContent = cnt > 0 ? '✅' : '—';
+                        const cc = document.getElementById(`scc-${sid}`);
+                        cc.textContent = cnt > 0 ? `${cnt} links` : 'Sin resultados';
+                        if (cnt > 0) cc.classList.add('has');
+                    });
+                }
+                document.getElementById('lbl-links').textContent = Object.values(siteCounts).reduce((a, b) => a + b, 0) + ' links encontrados';
+            }
+            if (d.type === 'done') {
+                es.close();
+                Object.entries(d.site_results || {}).forEach(([sid, cnt]) => {
+                    siteCounts[sid] = cnt;
+                    const card = document.getElementById(`sc-${sid}`);
+                    if (!card) return;
+                    card.classList.remove('active');
+                    card.classList.add(cnt > 0 ? 'ok' : 'empty');
+                    document.getElementById(`sci-${sid}`).textContent = cnt > 0 ? '✅' : '—';
+                    const cc = document.getElementById(`scc-${sid}`);
+                    cc.textContent = cnt > 0 ? `${cnt} links` : 'Sin resultados';
+                    if (cnt > 0) cc.classList.add('has');
+                });
+                document.getElementById('m-fill').style.width = '100%';
+                document.getElementById('p-pct').textContent = '100%';
+                document.getElementById('p-sub').textContent = 'Búsqueda completada';
+                setTimeout(() => showResults(d), 700);
+            }
+            if (d.type === 'error') { es.close(); appendLog(`❌ ERROR: ${d.msg}`); document.getElementById('p-sub').textContent = '⚠️ Error — revisa el log' }
+        }
+
+        function appendLog(msg) {
+            const el = document.getElementById('log-out');
+            const sp = document.createElement('span');
+            if (msg.includes('✓') || msg.includes('✅')) sp.className = 'ok';
+            if (msg.includes('✗') || msg.includes('❌')) sp.className = 'err';
+            sp.textContent = msg + '\n';
+            el.appendChild(sp);
+            el.scrollTop = el.scrollHeight;
+        }
+
+        function showResults(d) {
+            const sr = d.site_results || {}, total = d.total || 0, withRes = Object.values(sr).filter(c => c > 0).length;
+            document.getElementById('r-query').textContent = `"${query}"`;
+            document.getElementById('k-total').textContent = total;
+            document.getElementById('k-sites').textContent = withRes;
+            document.getElementById('k-queried').textContent = searchedSites.length;
+            document.getElementById('dl-label').textContent = `Descargar resultados (${total} links)`;
+            document.getElementById('rt-body').innerHTML = searchedSites.map(s => {
+                const n = sr[s.id] || 0;
+                return `<div class="rt-row"><span class="rt-id">${s.id.toUpperCase()}</span><span class="rt-name">${sn(s)}</span><span class="rt-n ${n > 0 ? 'has' : 'no'}">${n}</span><span class="rt-dot">${n > 0 ? '✅' : '—'}</span></div>`;
+            }).join('');
+            showView('v-results');
+        }
+
+        function dlFile() { if (jobId) window.location.href = `/api/download/${jobId}` }
+        function newSearch() { jobId = null; document.getElementById('q-input').value = ''; showView('v-search'); document.getElementById('q-input').focus() }
+        function showView(id) { document.querySelectorAll('.view').forEach(v => v.classList.remove('active')); document.getElementById(id).classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }) }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,476 @@
+﻿tecnologia,count
+5G,148
+NTN,51
+D2D,47
+IMT,44
+6G,42
+Redes móviles,41
+Wi-Fi,39
+4G,35
+IoT,31
+Redes privadas,29
+LTE,26
+Satélites,25
+IA,22
+LEO,13
+Banda ancha móvil,12
+3G,12
+FWA,12
+GSM,11
+5G-Advanced,11
+Servicios móviles,10
+IMT (International Mobile Telecommunications),9
+2G,9
+Redes inalámbricas,8
+DTT,8
+Banda ancha inalámbrica,8
+PMSE,8
+Fixed Wireless Access (FWA),8
+UMTS,7
+Spectrum sharing,7
+MSS,7
+mmWave,6
+Redes satelitales,5
+Servicios satelitales,5
+Radiodifusión,5
+TDD,5
+Mobile Satellite Services (MSS),5
+IMT-2030,5
+C-V2X,5
+ISAC,5
+DAB,5
+Wi-Fi 7,5
+WiMAX,4
+PPDR,4
+M2M,4
+Smartphones,4
+Enlaces de microondas,4
+Comunicaciones móviles,4
+Starlink,4
+Fibra óptica,4
+Acceso inalámbrico fijo (FWA),4
+Digital Terrestrial Television (DTT),4
+FDD,4
+Telecomunicaciones móviles,4
+Edge computing,4
+HAPS,4
+AFC,4
+Network Slicing,3
+Redes móviles terrestres,3
+Televisión Digital Terrestre (DTT),3
+Radio cognitiva,3
+SRD,3
+DVB-T,3
+Broadband,3
+Redes fijas,3
+Conectividad inalámbrica,3
+Mobile Satellite Service (MSS),3
+Conectividad satelital,3
+Tecnologías inalámbricas,3
+Telefonía móvil,3
+Small cells,3
+UAS/drones,3
+NGSO,3
+GSO,3
+GNSS,3
+PNT,3
+Compartición de infraestructura,2
+Open RAN,2
+VoLTE,2
+3GPP,2
+Teléfonos móviles,2
+Servicios fijos,2
+FTTH,2
+Mobile broadband,2
+Tecnologías móviles,2
+Cámaras inalámbricas,2
+Dispositivos de corto alcance (SRD),2
+Industry 4.0,2
+RFID,2
+Radio altímetros,2
+Network slicing,2
+Drones,2
+Intelligent Transport Systems (ITS),2
+DAB radio,2
+Sistemas de antenas activas,2
+Servicios Satelitales Móviles (MSS),2
+WLL,2
+Telecomunicaciones,2
+RLANs,2
+Robótica,2
+TVWS,2
+MVNO,2
+Conectividad móvil,2
+Banda ancha fija y móvil,2
+International Mobile Telecommunications (IMT),2
+Servicios de comunicación satelital,2
+Banda ancha,2
+Servicios satelitales móviles (MSS),2
+Servicios satelitales fijos (FSS),2
+Internet fijo,2
+Redes terrestres,2
+Servicio Fijo por Satélite (FSS),2
+Sistemas satelitales,2
+ESIM,2
+Fixed Satellite Service (FSS),2
+4G/LTE,2
+Servicios de internet,2
+Beamforming,2
+Wireless broadband,2
+NB-IoT,2
+Cloud computing,2
+Radio altimeters,2
+Banda ancha satelital,2
+UAS,2
+RedCap,2
+ITS,2
+Satélite,2
+Automatización,2
+CBRS,2
+ECall,2
+NGSO/GSO,2
+Banda ancha satelital a celulares,2
+Virtualización de funciones de red (NFV),1
+Redes definidas por software (SDN),1
+Edge Computing,1
+Acceso fijo inalámbrico (FWA),1
+Taara Kightbridge,1
+FTTx,1
+Fibra óptica con núcleo hueco,1
+Redes neutras de fibra óptica,1
+Hyperscaler Cloud,1
+Drones Mensajeros,1
+Realidad Aumentada,1
+Brain-Computer Interfaces,1
+GPS,1
+Servicios móviles avanzados,1
+Roaming móvil,1
+Radio AM,1
+Radio FM,1
+Telecomunicaciones inalámbricas fijas,1
+Telecomunicaciones inalámbricas móviles,1
+Alertas de emergencia móvil,1
+Banda Ancha Móvil,1
+Conectividad,1
+Gigabit network,1
+Next-generation wireless high-speed networks,1
+2G/3G/4G,1
+Redes de acceso radio (RAN sharing),1
+Redes de núcleo multi-operador (MOCN),1
+Enlaces fijos,1
+Servicio fijo por satélite,1
+Sistemas de transporte inteligentes,1
+Sistemas de coordinación de frecuencia automatizada (AFC),1
+DECT,1
+Campus solutions,1
+Fixed links,1
+Point-to-point,1
+Point-to-multipoint,1
+Radar,1
+Telemetry,1
+Enlaces de video,1
+Comunicaciones de drones,1
+Radioaficionados,1
+SAP/SAB,1
+ISM,1
+AVI,1
+Telemetría,1
+MMDS,1
+Carrier aggregation,1
+Frequency-division duplex (FDD),1
+Time-division duplex (TDD),1
+Supplemental Downlink (SDL),1
+Terrestrial digital audio broadcasting (T-DAB),1
+CDMA,1
+TETRA,1
+PMR,1
+PAMR,1
+Radars,1
+Amateur radio,1
+Wireless Broadband (WBB LMP),1
+Satélites (MSS),1
+IEEE 802.11,1
+Bluetooth,1
+Zigbee,1
+WAS/RLANs,1
+Direct-to-cell (D2C),1
+Direct-to-handset (D2H),1
+LTE (4G),1
+Espectro radioeléctrico,1
+Comunicaciones electrónicas,1
+Radiotelegrafía,1
+Enlaces fijos punto a punto,1
+Redes Gigabit,1
+Redes inalámbricas de alta velocidad de próxima generación,1
+Redes de Acceso Radio (RAN),1
+Estaciones terrenas satelitales,1
+Componentes Terrestres Complementarios (CGC),1
+Redes satelitales geoestacionarias (GSO) y no geoestacionarias (NGSO),1
+RAN sharing,1
+Broadband wireless access (BWA),1
+Wireless Local Loop (WLL),1
+Geostacionarios,1
+No geostacionarios (NGSO),1
+Kuiper,1
+Oneweb,1
+"Enlaces de microondas (punto a punto, punto a multipunto)",1
+Redes de fibra,1
+Wi-Fi 6E,1
+Sistemas de backhaul,1
+Sistemas de Coordinación Automática de Frecuencia (AFC),1
+IMT services,1
+Servicios móviles comerciales,1
+Servicios de comunicación inalámbrica,1
+Dispositivos portátiles,1
+Televisión Analógica Terrestre,1
+Redes de área local inalámbricas (WLAN),1
+Redes de área metropolitana inalámbricas (WMAN),1
+Servicios de banda ancha inalámbrica,1
+TV analógica,1
+Fixed Wireless Access,1
+Servicios de Internet,1
+Servicios fijos de voz y datos,1
+Modem-router,1
+CPE (Customer Premises Equipment),1
+Sistema de televisión digital terrestre,1
+Roaming nacional,1
+Servicios inalámbricos,1
+Wimax,1
+Redes IMT,1
+Inalámbricas,1
+Broadband Radio Service (BRS),1
+Radio enlaces,1
+CBRS (Citizens Broadband Radio Service),1
+Sistemas de radio troncalizado,1
+Supplemental Coverage from Space (SCS),1
+Text-to-911,1
+Estaciones terrenas fijas,1
+ESIMs (Earth Stations In Motion),1
+Dispositivos inalámbricos,1
+Mobile Broadband,1
+Wireless Local Area Networks (WLAN),1
+Wireless Metropolitan Area Networks (WMAN),1
+MOCN,1
+Intelligent Information Technologies,1
+WiGig,1
+Banda ancha fija (más de 10 Gbps),1
+Cables Ethernet Cat 6,1
+Cables Ethernet Cat 7,1
+Cables Ethernet Cat 8,1
+Fibra oscura,1
+Servicios inalámbricos fijos,1
+Servicios avanzados basados en espectro,1
+GEO,1
+Satélites (NGSO),1
+Servicios satelitales de radiodifusión (BSS),1
+Estaciones terrenas,1
+Estaciones terrenas en movimiento (ESIMs),1
+Ciberseguridad,1
+Televisión satelital (FTA),1
+Televisión digital,1
+Comunicación inalámbrica,1
+Future Railway Mobile Communication Systems (FRMCS),1
+Radiofrequency jamming,1
+Wireless communication,1
+Cell phones,1
+Non-standalone (NSA) architectures,1
+Satellite mobile coverage service (SMCS),1
+3GPP Release 17,1
+PCS,1
+Estaciones base móviles,1
+Radiodifusión de TV,1
+Radio digital,1
+Redes industriales,1
+Fixed broadband,1
+Pay TV,1
+VoIP,1
+Smart meters,1
+Redes inalámbricas de banda ancha,1
+Quantum,1
+Cloud,1
+Edge services,1
+Wireless Telegraphy,1
+Comunicaciones inalámbricas,1
+Servicios móviles satelitales (MSS),1
+Dispositivos con SIM,1
+Transmisiones satelitales,1
+Radars (control de tráfico aéreo),1
+4G LTE,1
+Redes de Comunicaciones Inalámbricas Inteligentes (IWC),1
+Televisión digital terrestre,1
+Radio AM/FM,1
+Telefonía inalámbrica,1
+Datos móviles,1
+Redes móviles celulares,1
+Sistemas terrestres,1
+Internet satelital,1
+Servicios Satelitales,1
+Telecomunicaciones públicas,1
+Agregación de portadoras (Carrier aggregation),1
+3GPP Release 15,1
+Aplicaciones de baja potencia (LPI),1
+Aplicaciones de muy baja potencia (VLP),1
+Fixed-Satellite Service (FSS),1
+Dense Wavelength Division Multiplexing (DWDM),1
+Optical Line Amplifiers (OLA),1
+Gigabit Passive Optical Network (GPON),1
+Redes seguras,1
+Carrier Aggregation,1
+Mobile telephony,1
+Internet access and data transmission,1
+Servicios de comunicación electrónica inalámbrica,1
+Nuevas tecnologías inalámbricas,1
+Satélites Gen2,1
+Wireless Emergency Alerts (WEA),1
+SMS,1
+"Satélites (GSO, NGSO, FSS, alta capacidad)",1
+ESIMs (Earth Stations in Motion),1
+Hardware de alta frecuencia,1
+Mobile-satellite services (MSS),1
+Advanced Wireless Service (AWS-4),1
+Fixed Wireless Broadband,1
+Redes inalámbricas avanzadas,1
+Telecomunicaciones inalámbricas,1
+Direct-to-Cell (D2C),1
+Mobile Virtual Network Operator (MVNO),1
+Tecnología satelital,1
+Servicios móviles terrestres,1
+Advanced Wireless Services (AWS-3),1
+Servicios inalámbricos avanzados,1
+Estaciones base,1
+Narrowband,1
+SMR,1
+B/ILT,1
+Wireless networks,1
+MVNO (Mobile Virtual Network Operator),1
+Cobertura suplementaria desde el espacio (SCS),1
+Tecnologías de gestión de interferencias,1
+Constelaciones NGSO,1
+Diseño satelital,1
+Redes de cobre fijas,1
+Video-on-demand (VoD),1
+Líneas arrendadas,1
+Transporte y transmisión de datos de alta capacidad,1
+Redes comunitarias,1
+IPTV,1
+Video on Demand (VoD),1
+Over-the-top (OTT) services,1
+Phased array antenna,1
+Smartwatches,1
+Chipsets,1
+Sensing y comunicaciones integradas,1
+IRIS²,1
+EU Critical Communication System (EUCCS),1
+Sistemas híbridos,1
+Redes de conectividad digital,1
+Servicios de distribución,1
+Satellite services,1
+Air traffic systems,1
+Weather radar,1
+Terrestrial IMT networks,1
+Satellite systems/networks,1
+Servicios de telecomunicaciones,1
+Servicios de radiodifusión,1
+Plataformas de gran altitud (globos estratosféricos),1
+Radiocomunicaciones espaciales,1
+Acceso inalámbrico móvil,1
+Operadores móviles (MNO),1
+Constelaciones satelitales,1
+Sistemas de navegación por satélite,1
+Inter-satellite links,1
+Internet Protocol (IP),1
+RAN platform,1
+Programme Making and Special Events (PMSE),1
+Sistemas de banda ancha inalámbrica terrestre,1
+Integrated Sensing and Communications (ISC),1
+Fibra óptica (FTTP),1
+Cable Docsis 3.1,1
+VHCN (Very High Capacity Networks),1
+GSM-R,1
+FRMCS,1
+Mobile Satellite Services,1
+Redes de muy alta capacidad (VHCN),1
+Redes móviles de banda ancha,1
+Sistemas de alerta pública,1
+Redes de cable,1
+Redes de Muy Alta Capacidad (VHCN),1
+"Redes de fibra óptica (FTTB, FTTH)",1
+DSL,1
+DOCSIS,1
+Ethernet,1
+Acceso Fijo Inalámbrico (FWA),1
+Small cells (SAWAPs),1
+Active Antenna Systems (AAS),1
+Macro cells,1
+Redes de acceso inalámbrico de área pequeña (SAWAPs),1
+Máquina a máquina (M2M),1
+Sistemas de antena activa (AAS),1
+Servicios de comunicaciones electrónicas (ECS),1
+Servicios de voz,1
+Servicios de comunicación interpersonal,1
+M2M (Machine-to-Machine),1
+Redes de comunicaciones electrónicas,1
+Tecnología móvil,1
+Tecnologías cableadas,1
+Acceso a internet de banda ancha,1
+MEO,1
+Servicios Satelitales Fijos (FSS),1
+Infraestructura Europea de Comunicaciones Cuánticas (EuroQCI),1
+Sistemas de comunicación híbridos (satélite y componentes terrestres complementarios),1
+WAS,1
+Wireless audio microphones (PMSE),1
+Wireless electronic communications networks (ECNs),1
+High efficiency video coding (HEVC),1
+Ultra-high definition (UHD),1
+Mobile applications,1
+Wind profiler radars,1
+Radio astronomy,1
+NGSO (Non-Geostationary) systems,1
+FSS (Fixed Satellite Service),1
+MSS (Mobile Satellite Service),1
+EESS (Earth Exploration Satellite Service),1
+Comunicaciones móviles a bordo (aeronáuticas y marítimas),1
+UWB (Ultra-Wide Band),1
+ISAC (Integrated Sensing and Communications),1
+Backhaul,1
+AFC (Automated Frequency Coordination),1
+FSS,1
+HIBS,1
+NFV/SDN,1
+Satélite integrado a redes móviles,1
+MFCN,1
+Caching,1
+API,1
+LPWAN,1
+TDT,1
+Data centers,1
+VHF,1
+Radioaltímetros,1
+PNT/GNSS,1
+SAS,1
+GNSS/PNT,1
+2G/3G,1
+Guerra electrónica,1
+MRSS,1
+EMBB,1
+AR/VR,1
+AGVs,1
+Realidad Virtual,1
+Vehículos conectados,1
+Mobile Edge Computing,1
+ViLTE,1
+IMS,1
+RCS,1
+SIP,1
+IP,1
+AR,1
+XR,1
+OTT services,1
+CS-fallback,1
+VoNR,1
+IMS Data Channel,1
+Web technologies,1
+Internet móvil,1
+Redes no públicas,1
+Cloud storage,1
+Redes locales,1

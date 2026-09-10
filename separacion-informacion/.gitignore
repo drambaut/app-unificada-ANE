@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.streamlit/
+
+# Archivos de datos reales (no deben versionarse)
+*.xlsx
+*.xls
+!tests/**/*.xlsx
+
+# Archivos temporales de Excel
+~$*.xlsx
+~$*.xls

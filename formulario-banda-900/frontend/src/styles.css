@@ -1,0 +1,213 @@
+:root {
+  --azul-ane: #0b4f8a;
+  --gris-fondo: #f4f6f8;
+  --borde: #d0d7de;
+  --error: #c0392b;
+  --ok: #1e7a34;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--gris-fondo);
+  color: #1c1c1c;
+}
+
+.contenedor {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+}
+
+.encabezado {
+  background: var(--azul-ane);
+  color: white;
+  padding: 20px 16px;
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.tarjeta {
+  background: white;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+  font-size: 1.05rem;
+  color: var(--azul-ane);
+}
+
+.campo {
+  margin-bottom: 14px;
+}
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.fila {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fila .campo {
+  flex: 1 1 200px;
+}
+
+.campo-antena label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltip-icono {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--azul-ane);
+  color: white;
+  font-size: 0.7rem;
+  cursor: help;
+}
+
+.tooltip-texto {
+  position: absolute;
+  bottom: 125%;
+  left: 0;
+  background: #222;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: normal;
+  width: 240px;
+  z-index: 10;
+  line-height: 1.3;
+}
+
+.error-texto {
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.mapa {
+  height: 420px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+button {
+  background: var(--azul-ane);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button.secundario {
+  background: white;
+  color: var(--azul-ane);
+  border: 1px solid var(--azul-ane);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mensaje-ok {
+  background: #eafaf0;
+  border: 1px solid var(--ok);
+  color: var(--ok);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.mensaje-error {
+  background: #fdecea;
+  border: 1px solid var(--error);
+  color: var(--error);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th,
+td {
+  border: 1px solid var(--borde);
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.pestanas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.pestanas button {
+  background: white;
+  color: var(--azul-ane);
+  border: 1px solid var(--azul-ane);
+}
+
+.pestanas button.activa {
+  background: var(--azul-ane);
+  color: white;
+}
+
+.pie-politica {
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media print {
+  .no-imprimir {
+    display: none;
+  }
+  .encabezado {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
