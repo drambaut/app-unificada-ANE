@@ -32,7 +32,7 @@ services:
       - key: OUTPUT_DIR
         value: outputs
       - key: DASHBOARD_DATA_SOURCE
-        value: auto
+        value: demo
       - key: DATABASE_PATH
         value: data/demo_observatorio.db
       - key: REQUEST_TIMEOUT_SECONDS
