@@ -1,8 +1,8 @@
 # Contenedor del shell unificado (main.py + las apps Streamlit).
-# formulario-banda-900 se despliega como servicio separado (ver render.yaml) y
-# se embebe vía iframe. webscraping-internacional también, salvo con
-# WEBSCRAPING_MODE=streamlit, que lo ejecuta dentro de este contenedor
-# (por eso incluye Playwright + Chromium).
+# formulario-banda-900 y webscraping-internacional se despliegan además como
+# servicios separados (ver render.yaml) y se embeben vía iframe, salvo con
+# BANDA900_MODE=streamlit / WEBSCRAPING_MODE=streamlit, que los ejecutan dentro
+# de este contenedor (por eso incluye Playwright + Chromium).
 FROM python:3.11-slim
 
 WORKDIR /app
@@ -33,6 +33,20 @@ COPY vigilancia-tecnologica/ ./vigilancia-tecnologica/
 COPY webscraping-internacional/streamlit_app.py ./webscraping-internacional/
 COPY webscraping-internacional/src/ ./webscraping-internacional/src/
 COPY webscraping-internacional/config/ ./webscraping-internacional/config/
+# Banda 900: interfaz Streamlit + módulos de backend/app que usa (sin FastAPI,
+# routers, React/Node ni build). El modo legacy usa FORMULARIO_B900_URL.
+COPY formulario-banda-900/streamlit_app.py ./formulario-banda-900/
+COPY formulario-banda-900/backend/app/__init__.py \
+     formulario-banda-900/backend/app/settings.py \
+     formulario-banda-900/backend/app/database.py \
+     formulario-banda-900/backend/app/models.py \
+     formulario-banda-900/backend/app/schemas.py \
+     formulario-banda-900/backend/app/campos_antena.py \
+     formulario-banda-900/backend/app/services.py \
+     formulario-banda-900/backend/app/supabase_client.py \
+     formulario-banda-900/backend/app/supabase_auth.py \
+     formulario-banda-900/backend/app/divipola.json \
+     ./formulario-banda-900/backend/app/
 
 ENV PORT=8501
 EXPOSE 8501

@@ -5,8 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from . import database, settings
 from .routers import carga_masiva, config, estaciones, solicitudes
 from .supabase_client import ensure_bucket_cargas
+
+# El servicio no arranca sin base configurada (mismo error que antes lanzaba
+# database.py al importarse).
+if database.engine is None:
+    database.crear_engine(settings.DATABASE_URL)
 
 app = FastAPI(title="ANE - Solicitudes banda 900 MHz")
 

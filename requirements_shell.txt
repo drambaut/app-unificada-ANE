@@ -47,3 +47,9 @@ supabase
 # navegador (solo Chromium) se instala en el Dockerfile.
 playwright==1.63.0
 deep-translator>=1.11.4
+
+# --- Formulario Banda 900 (formulario-banda-900 con BANDA900_MODE=streamlit) ---
+# psycopg2: database.crear_engine() fija postgresql+psycopg2 (SQLAlchemy 2.1
+# usaría psycopg v3 por defecto). email-validator: EmailStr de schemas.SolicitudIn.
+psycopg2-binary>=2.9.9
+email-validator>=2.0
