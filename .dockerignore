@@ -1,0 +1,13 @@
+.git
+.vscode
+**/.DS_Store
+
+**/.venv
+**/venv
+**/node_modules
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+
+**/.env
+**/.streamlit/secrets.toml

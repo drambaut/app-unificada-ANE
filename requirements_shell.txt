@@ -39,3 +39,11 @@ feedparser>=6.0,<7.0
 tqdm
 jsonschema==4.23.0
 supabase
+
+# --- Web Searcher (webscraping-internacional con WEBSCRAPING_MODE=streamlit) ---
+# playwright fijado para un build reproducible (cada versión trae su propia
+# revisión de Chromium). Debe ser >=1.55: primera versión que soporta Debian 13
+# (base actual de python:3.11-slim) en `playwright install --with-deps`. El
+# navegador (solo Chromium) se instala en el Dockerfile.
+playwright==1.63.0
+deep-translator>=1.11.4
