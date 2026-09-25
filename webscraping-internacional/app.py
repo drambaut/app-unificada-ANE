@@ -7,15 +7,9 @@ Producción (Render):   uvicorn main_api:app --host 0.0.0.0 --port $PORT
 
 import asyncio
 import json
-import os
 import sys
-import tempfile
-import threading
-import time
-import uuid
-from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import List
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, HTMLResponse, Response, StreamingResponse
@@ -30,10 +24,7 @@ CONFIG_PATH = BASE_DIR / "config" / "sites.json"
 
 sys.path.insert(0, str(SRC_DIR))
 
-from browser    import get_browser, human_delay
-from exporter   import export_to_csv, export_to_excel
-from scraper    import search_site
-from translator import get_all_queries_for_site, translate_query
+from search_jobs import JOBS, JobInputError, start_job
 
 # ── App ───────────────────────────────────────────────────────────────────────
 app = FastAPI(title="Web Searcher — ANE")
@@ -50,124 +41,6 @@ try:
 except FileNotFoundError:
     ALL_SITES = []
     print(f"⚠️  ADVERTENCIA: No se encontró {CONFIG_PATH}")
-
-
-# ── Modelo de Job ─────────────────────────────────────────────────────────────
-@dataclass
-class Job:
-    id: str
-    status: str = "pending"            # pending | running | done | error
-    current: int = 0
-    total: int = 0
-    current_site_id: str = ""
-    current_site_name: str = ""
-    logs: List[str] = field(default_factory=list)
-    site_results: Dict[str, int] = field(default_factory=dict)
-    results: List[Dict] = field(default_factory=list)
-    file_bytes: Optional[bytes] = None
-    file_name: Optional[str] = None
-    file_mime: Optional[str] = None
-    error_msg: Optional[str] = None
-    created_at: float = field(default_factory=time.time)
-
-    def log(self, msg: str):
-        ts = time.strftime("%H:%M:%S")
-        self.logs.append(f"[{ts}] {msg}")
-
-
-JOBS: Dict[str, Job] = {}
-
-
-def _cleanup_old_jobs():
-    """Elimina jobs con más de 1 hora de antigüedad."""
-    now = time.time()
-    stale = [jid for jid, j in JOBS.items() if now - j.created_at > 3600]
-    for jid in stale:
-        del JOBS[jid]
-
-
-# ── Motor de scraping (corre en hilo propio) ──────────────────────────────────
-async def _run_scraper(job: Job, sites: list, translations: dict,
-                       max_links: int, fmt: str):
-    job.status = "running"
-    job.total  = len(sites)
-    job.log(f"Iniciando búsqueda en {len(sites)} organismo(s)...")
-
-    try:
-        async with get_browser(headless=True) as (browser, context):
-            for i, site in enumerate(sites, 1):
-                job.current           = i - 1
-                job.current_site_id   = site["id"]
-                job.current_site_name = site["name"]
-                job.log(f"[{i}/{job.total}] {site['name']}")
-
-                queries     = get_all_queries_for_site(site, translations)
-                page        = await context.new_page()
-                site_buffer = []
-
-                for lang, query in queries:
-                    job.log(f"  → [{lang.upper()}] \"{query}\"")
-                    try:
-                        res = await search_site(page, site, query, lang)
-                        site_buffer.extend(res[:max_links])
-                        job.log(f"  ✓ {len(res)} links encontrados")
-                    except Exception as e:
-                        job.log(f"  ✗ {str(e)[:100]}")
-                    await human_delay(1.0, 2.0)
-
-                # Deduplicar URLs del sitio
-                seen: set = set()
-                unique = [r for r in site_buffer
-                          if r["url"] not in seen and not seen.add(r["url"])]
-
-                job.results.extend(unique)
-                job.site_results[site["id"]] = len(unique)
-                job.current = i
-                job.log(f"  ━ {len(unique)} links únicos")
-
-                await page.close()
-                if i < len(sites):
-                    await human_delay(1.5, 3.0)
-
-        total = len(job.results)
-        job.log("")
-        job.log(f"✅ Completado — {total} links en total")
-
-        # Generar archivo de exportación
-        with tempfile.TemporaryDirectory() as tmpdir:
-            q = translations.get("original", "search")
-            if fmt == "xlsx":
-                path = export_to_excel(job.results, q, tmpdir, ALL_SITES)
-                job.file_mime = (
-                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                )
-            else:
-                path = export_to_csv(job.results, q, tmpdir)
-                job.file_mime = "text/csv"
-
-            if path and os.path.exists(path):
-                with open(path, "rb") as f:
-                    job.file_bytes = f.read()
-                job.file_name = Path(path).name
-
-        job.status = "done"
-
-    except Exception as e:
-        job.error_msg = str(e)
-        job.log(f"❌ Error fatal: {e}")
-        job.status = "error"
-
-
-def _thread_runner(job: Job, sites: list, translations: dict,
-                   max_links: int, fmt: str):
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    try:
-        loop.run_until_complete(
-            _run_scraper(job, sites, translations, max_links, fmt)
-        )
-    finally:
-        loop.close()
 
 
 # ── Rutas API ─────────────────────────────────────────────────────────────────
@@ -196,43 +69,22 @@ class SearchRequest(BaseModel):
 
 @app.post("/api/search")
 async def start_search(req: SearchRequest):
-    _cleanup_old_jobs()
-
-    query = req.query.strip()
-    if not query:
-        raise HTTPException(400, "La query no puede estar vacía")
-
-    sites = [s for s in ALL_SITES
-             if not req.site_ids or s["id"] in req.site_ids]
-    if not sites:
-        raise HTTPException(400, "No se encontraron sitios válidos")
-
-    # Traducciones
-    if req.no_translate:
-        translations = {
-            "original": query,
-            "en": query, "es": query, "ko": query, "pt": query,
-        }
-    else:
-        translations = translate_query(query, ["en", "es", "ko", "pt"])
-    translations["original"] = query
-
-    # Crear job y lanzar hilo
-    job_id = str(uuid.uuid4())[:8]
-    job    = Job(id=job_id)
-    JOBS[job_id] = job
-
-    thread = threading.Thread(
-        target=_thread_runner,
-        args=(job, sites, translations, req.max_links, req.format),
-        daemon=True,
-    )
-    thread.start()
+    try:
+        started = start_job(
+            query=req.query,
+            site_ids=req.site_ids,
+            no_translate=req.no_translate,
+            fmt=req.format,
+            max_links=req.max_links,
+            all_sites=ALL_SITES,
+        )
+    except JobInputError as e:
+        raise HTTPException(400, str(e))
 
     return {
-        "job_id": job_id,
-        "sites": [{"id": s["id"], "name": s["name"]} for s in sites],
-        "translations": {k: v for k, v in translations.items()
+        "job_id": started.job.id,
+        "sites": [{"id": s["id"], "name": s["name"]} for s in started.sites],
+        "translations": {k: v for k, v in started.translations.items()
                          if k != "original"},
     }
 
